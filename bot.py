@@ -108,10 +108,8 @@ def unknown_message(message):
 if __name__ == "__main__":
     init_db()
 
-    # Первое обновление сразу при запуске
     update_all_rates()
 
-    # Планировщик: обновлять каждые 6 часов в фоне
     scheduler = BackgroundScheduler()
     scheduler.add_job(update_all_rates, 'interval', hours=6)
     scheduler.start()
